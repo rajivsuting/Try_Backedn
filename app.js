@@ -1,16 +1,15 @@
 // app.js
 
 const express = require("express");
-const connectDB = require("./db/connectDB");
 const cors = require("cors");
-
-const postRoutes = require("./routes/postRoutes"); // Adjust the path based on your structure
-
 const app = express();
+app.use(cors());
+const connectDB = require("./db/connectDB");
+
+const postRoutes = require("./routes/postRoutes");
 
 const port = 3000;
 
-app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 app.use("/api/post", postRoutes);
