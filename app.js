@@ -1,11 +1,18 @@
-// app.js
-
 const express = require("express");
 const cors = require("cors");
 const app = express();
-app.use(cors());
-const connectDB = require("./db/connectDB");
 
+// Allow requests from http://127.0.0.1:5501
+const corsOptions = {
+  origin: "http://127.0.0.1:5501",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
+const connectDB = require("./db/connectDB");
 const postRoutes = require("./routes/postRoutes");
 
 const port = 3000;
